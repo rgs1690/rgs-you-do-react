@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import getTodos from '../api/data/todoData';
+import Todo from '../components/Todo';
 
 function Initialize() {
   const [todos, setTodos] = useState([]);
@@ -9,7 +10,7 @@ function Initialize() {
   return (
     <>
       {todos.map((todo) => (
-        <h1 key={todo.name}>{todo.name}</h1>
+        <Todo key={todo.name} todo={todo} />
       ))}
     </>
   );
