@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import getTodos from '../api/data/todoData';
 
 function Initialize() {
+  const [todos, setTodos] = useState([]);
   useEffect(() => {
-    getTodos().then(console.warn);
+    getTodos().then(setTodos);
   }, []);
   return (
     <>
-      <h1>Hello World!</h1>
+      {todos.map((todo) => (
+        <h1 key={todo.name}>{todo.name}</h1>
+      ))}
     </>
   );
 }
