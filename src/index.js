@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig); // connect firebase to your code along with lines 4 and 5
 ReactDOM.render(
   <React.StrictMode>
     <Initialize />

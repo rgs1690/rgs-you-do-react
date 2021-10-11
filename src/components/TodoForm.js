@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { createTodo } from '../api/data/todoData';
-
+// FORMS ALWAYS HAVE STATE!!
 export default function TodoForm({ obj = {} }) {
   const [formInput, setFormInput] = useState({
     name: obj.name || '',
