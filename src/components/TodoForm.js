@@ -31,7 +31,7 @@ export default function TodoForm({ obj = {} }) {
             name="name"
             id="name"
             value={formInput.name}
-            onChange={handleChange}
+            onChange={handleChange} // calling on change callback function
             required
           />
         </label>
