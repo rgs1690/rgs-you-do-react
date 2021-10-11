@@ -5,6 +5,7 @@ import { Alert } from 'reactstrap';
 // rfc + tab is the shortcut that will create broiler plate to start a component (react snippets extenstion)
 export default function Todo({ todo }) {
   // destructoring the PROPS (is an object) when you pass something to a component it is called a PROP!
+  // Alert is react strap item, you have to import it (on line 3)
   return (
     <>
       <Alert color="light">

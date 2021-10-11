@@ -12,6 +12,8 @@ function Initialize() {
   }, []);
   return (
     // the <> below is because JSX has to have a parent element/ wrapper. Since its only for the wrapper with no other purpose it is called a FRAGMENT
+    // below on line 18 is how you call COMPONENTS in react <ComponentName />
+    // line 23 is how you pass props to components <Todo todo={todo} /> You also have to pass it a key. It expents the same thing you pass the same thing you did when you wrote the function.
     <>
       <TodoForm />
       {todos.map(
