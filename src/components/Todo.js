@@ -1,16 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'reactstrap';
+import { deleteTodo, updateToDo } from '../api/data/todoData';
 
-export default function Todo({ todo }) {
+export default function Todo({ todo, setTodos, setEditItem }) {
+  const handleClick = (method) => {
+    if (method === 'delete') {
+      deleteTodo(todo.firebaseKey).then(setTodos);
+    } else {
+      updateToDo({ ...todo, complete: true }).then(setTodos);
+    }
+  };
   return (
     <>
       <Alert color="light">
-        <button className="btn btn-success" type="button">
-          COMPLETE
-        </button>
+        {todo.complete ? (
+          'DONE '
+        ) : (
+          <button
+            onClick={() => handleClick('update')}
+            className="btn btn-success"
+            type="button"
+          >
+            COMPLETE
+          </button>
+        )}
         {todo.name}
-        <button className="btn btn-danger" type="button">
+        <button
+          onClick={() => setEditItem(todo)}
+          className="btn btn-info"
+          type="button"
+        >
+          EDIT
+        </button>
+        <button
+          onClick={() => handleClick('delete')}
+          className="btn btn-danger"
+          type="button"
+        >
           DELETE
         </button>
       </Alert>
@@ -22,8 +49,11 @@ Todo.propTypes = {
     name: PropTypes.string,
     complete: PropTypes.bool,
     date: PropTypes.string,
+    firebaseKey: PropTypes.string,
     uid: PropTypes.string,
   }).isRequired,
+  setTodos: PropTypes.func.isRequired,
+  setEditItem: PropTypes.func.isRequired,
 };
 
 // Todo is a COMPONENT components as a standard use PASCAL case, capital letter first, with every first letter in a word is capital.

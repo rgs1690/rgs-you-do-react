@@ -22,13 +22,23 @@ const createTodo = (obj) => new Promise((resolve, reject) => {
     })
     .catch(reject);
 });
-/*
-const deleteTodo = (obj) => new Promise((resolve, reject) => {
-  axios.delete(`${baseURL}/todos/${firebaseKey}.json`)
-  .then(() => {
-    getTodos().then(resolve);
-  })
-  .catch(reject);
-})
-*/
-export { getTodos, createTodo };
+
+const deleteTodo = (firebaseKey) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${baseURL}/todos/${firebaseKey}.json`)
+    .then(() => {
+      getTodos().then(resolve);
+    })
+    .catch(reject);
+});
+
+const updateToDo = (obj) => new Promise((resolve, reject) => {
+  axios
+    .patch(`${baseURL}/todos/${obj.firebaseKey}.json`, obj)
+    .then(() => getTodos().then(resolve))
+    .catch(reject);
+});
+
+export {
+  getTodos, createTodo, deleteTodo, updateToDo,
+};
