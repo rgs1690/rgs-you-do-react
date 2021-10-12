@@ -42,6 +42,7 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
       });
     } else {
       createTodo({ ...formInput, date: new Date() }).then((todos) => {
+        // adding date of when todo is created
         setTodos(todos); // passing functions that setsTodos state, updating DOM with new TOdo and reset form
         resetForm();
       });
@@ -63,6 +64,7 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
         <button type="submit">{obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}</button>
       </form>
     </>
+    // button will submit if creating and there is no firebasekey but will show update if edit button was clicked
   );
 }
 // PROP VALIDATION!

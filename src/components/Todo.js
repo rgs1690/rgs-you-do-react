@@ -4,19 +4,21 @@ import { Alert } from 'reactstrap';
 import { deleteTodo, updateToDo } from '../api/data/todoData';
 
 export default function Todo({ todo, setTodos, setEditItem }) {
+  // if the method is delete it will delete todo with that firebasekey
   const handleClick = (method) => {
     if (method === 'delete') {
       deleteTodo(todo.firebaseKey).then(setTodos);
     } else {
-      updateToDo({ ...todo, complete: true }).then(setTodos);
+      updateToDo({ ...todo, complete: true }).then(setTodos); // if update it will spread todo and change complete to true then set the state of todo
     }
   };
   return (
     <>
       <Alert color="light">
-        {todo.complete ? (
+        {todo.complete ? ( // if complete no button will show only text of done
           'DONE '
         ) : (
+          // if not complete then button will show and run handleClick function of update if clicked
           <button
             onClick={() => handleClick('update')}
             className="btn btn-success"
@@ -27,7 +29,7 @@ export default function Todo({ todo, setTodos, setEditItem }) {
         )}
         {todo.name}
         <button
-          onClick={() => setEditItem(todo)}
+          onClick={() => setEditItem(todo)} // edit btn will set the new state of todo
           className="btn btn-info"
           type="button"
         >
@@ -53,7 +55,7 @@ Todo.propTypes = {
     uid: PropTypes.string,
   }).isRequired,
   setTodos: PropTypes.func.isRequired,
-  setEditItem: PropTypes.func.isRequired,
+  setEditItem: PropTypes.func.isRequired, // functions has props need validation too
 };
 
 // Todo is a COMPONENT components as a standard use PASCAL case, capital letter first, with every first letter in a word is capital.
