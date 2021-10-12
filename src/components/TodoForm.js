@@ -15,6 +15,7 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
       [e.target.name]: e.target.value,
     }));
   };
+  // using useEffect to setForm input IF the obj has a firebaseKey
   useEffect(() => {
     if (obj.firebaseKey) {
       setFormInput({
@@ -31,7 +32,7 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
     setFormInput({ ...initialState }); // you can spread it or just pass initalState So the state goes back to initial state
     setEditItem({});
   };
-
+  // if the obj has a firebasekey run updateToDo passing it the form input and then getting and setting todos
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
@@ -40,7 +41,7 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
         resetForm();
       });
     } else {
-      createTodo(formInput).then((todos) => {
+      createTodo({ ...formInput, date: new Date() }).then((todos) => {
         setTodos(todos); // passing functions that setsTodos state, updating DOM with new TOdo and reset form
         resetForm();
       });
