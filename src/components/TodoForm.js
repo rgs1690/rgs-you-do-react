@@ -15,7 +15,8 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
       [e.target.name]: e.target.value,
     }));
   };
-  // using useEffect to setForm input IF the obj has a firebaseKey
+  // using useEffect to check if theres firebasekey and setForm input IF the obj has does
+  // carbon copy of what object should look like upon submit. Want values inside of form to be in input.
   useEffect(() => {
     if (obj.firebaseKey) {
       setFormInput({
@@ -27,7 +28,7 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
       });
     }
   }, [obj]);
-
+  // dependancy array watches object and if object updates the useEffect will run and rerender object
   const resetForm = () => {
     setFormInput({ ...initialState }); // you can spread it or just pass initalState So the state goes back to initial state
     setEditItem({});
