@@ -15,7 +15,7 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
       [e.target.name]: e.target.value,
     }));
   };
-  // using useEffect to check if theres firebasekey and setForm input IF the obj has does
+  // using useEffect to check if theres firebasekey and setForm input IF the obj has one
   // carbon copy of what object should look like upon submit. Want values inside of form to be in input.
   useEffect(() => {
     if (obj.firebaseKey) {
@@ -62,7 +62,9 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
             required
           />
         </label>
-        <button type="submit">{obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}</button>
+        <button className="btn btn-success" type="submit">
+          {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
+        </button>
       </form>
     </>
     // button will submit if creating and there is no firebasekey but will show update if edit button was clicked
