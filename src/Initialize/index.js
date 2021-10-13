@@ -12,6 +12,8 @@ function Initialize() {
   }, []);
   return (
     <>
+      <button type="button">HOME</button>
+      <button type="button">VIEW COMPLETED</button>
       <TodoForm obj={editItem} setTodos={setTodos} setEditItem={setEditItem} />
       {todos.map((todo) => (
         <Todo

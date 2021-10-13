@@ -20,7 +20,7 @@ export default function Todo({ todo, setTodos, setEditItem }) {
         ) : (
           // if not complete then button will show and run handleClick function of update if clicked
           <button
-            onClick={() => handleClick('update')}
+            onClick={() => handleClick('update')} // since its passing a method you have to call it as an anonoymous function
             className="btn btn-success"
             type="button"
           >
