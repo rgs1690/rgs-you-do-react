@@ -12,17 +12,24 @@ function Initialize() {
   }, []);
   return (
     <>
-      <button type="button">HOME</button>
-      <button type="button">VIEW COMPLETED</button>
+      <div className="btnContainer">
+        <button type="button">HOME</button>
+        <button type="button">VIEW COMPLETED</button>
+      </div>
+      <div>
+        <h1>YOU-DO</h1>
+      </div>
       <TodoForm obj={editItem} setTodos={setTodos} setEditItem={setEditItem} />
-      {todos.map((todo) => (
-        <Todo
-          key={todo.firebaseKey}
-          todo={todo}
-          setTodos={setTodos}
-          setEditItem={setEditItem}
-        />
-      ))}
+      <div className="todoContainer">
+        {todos.map((todo) => (
+          <Todo
+            key={todo.firebaseKey}
+            todo={todo}
+            setTodos={setTodos}
+            setEditItem={setEditItem}
+          />
+        ))}
+      </div>
     </>
   );
 }

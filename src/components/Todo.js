@@ -14,14 +14,14 @@ export default function Todo({ todo, setTodos, setEditItem }) {
   };
   return (
     <>
-      <Alert color="light">
+      <Alert color="light" className="todoAlert">
         {todo.complete ? ( // if complete no button will show only text of done
           'DONE '
         ) : (
           // if not complete then button will show and run handleClick function of update if clicked
           <button
             onClick={() => handleClick('update')} // since its passing a method you have to call it as an anonoymous function
-            className="btn btn-success"
+            className="btn btn-success completeBtn"
             type="button"
           >
             COMPLETE

@@ -53,18 +53,19 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
     <>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">
-          Name
           <input
+            className="inputField"
             name="name"
             id="name"
+            placeholder="ADD A YOU-DO"
             value={formInput.name}
             onChange={handleChange}
             required
           />
+          <button className="btn btn-success submit" type="submit">
+            {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
+          </button>
         </label>
-        <button className="btn btn-success" type="submit">
-          {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
-        </button>
       </form>
     </>
     // button will submit if creating and there is no firebasekey but will show update if edit button was clicked
