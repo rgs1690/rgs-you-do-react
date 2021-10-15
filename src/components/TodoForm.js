@@ -55,7 +55,7 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">
           <input
-            className="form-control form-control-lg me-1"
+            className="form-control form-control-lg me-3"
             name="name"
             id="name"
             placeholder="ADD A YOU-DO"

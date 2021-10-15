@@ -3,6 +3,27 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { deleteTodo, updateToDo } from '../api/data/todoData';
 
+const TodoStyle = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  h5 {
+    flex-grow: 2;
+    margin-left: 20px;
+  }
+  button {
+    color: white;
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+
+  .deleteBtn {
+    margin-left: 10px;
+  }
+`;
+
 export default function Todo({ todo, setTodos, setEditItem }) {
   // if the method is delete it will delete todo with that firebasekey
   const handleClick = (method) => {
@@ -12,22 +33,6 @@ export default function Todo({ todo, setTodos, setEditItem }) {
       updateToDo({ ...todo, complete: true }).then(setTodos); // if update it will spread todo and change complete to true then set the state of todo
     }
   };
-  const TodoStyle = styled.div`
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    h5 {
-      flex-grow: 2;
-      margin-left: 20px;
-    }
-    button {
-      color: white;
-      &:first-child {
-        margin-right: 10px;
-      }
-    }
-  `;
-
   return (
     <>
       <TodoStyle className="alert alert-light" role="alert">
@@ -43,7 +48,7 @@ export default function Todo({ todo, setTodos, setEditItem }) {
             COMPLETE
           </button>
         )}
-        {todo.name}
+        <h5>{todo.name}</h5>
         <button
           onClick={() => setEditItem(todo)} // edit btn will set the new state of todo
           className="btn btn-info"
@@ -53,7 +58,7 @@ export default function Todo({ todo, setTodos, setEditItem }) {
         </button>
         <button
           onClick={() => handleClick('delete')}
-          className="btn btn-danger"
+          className="btn btn-danger deleteBtn"
           type="button"
         >
           DELETE
