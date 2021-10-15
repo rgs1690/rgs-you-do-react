@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Alert } from 'reactstrap';
+import styled from 'styled-components';
 import { deleteTodo, updateToDo } from '../api/data/todoData';
 
 export default function Todo({ todo, setTodos, setEditItem }) {
@@ -12,9 +12,25 @@ export default function Todo({ todo, setTodos, setEditItem }) {
       updateToDo({ ...todo, complete: true }).then(setTodos); // if update it will spread todo and change complete to true then set the state of todo
     }
   };
+  const TodoStyle = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    h5 {
+      flex-grow: 2;
+      margin-left: 20px;
+    }
+    button {
+      color: white;
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  `;
+
   return (
     <>
-      <Alert color="light" className="todoAlert">
+      <TodoStyle className="alert alert-light" role="alert">
         {todo.complete ? ( // if complete no button will show only text of done
           'DONE '
         ) : (
@@ -42,7 +58,7 @@ export default function Todo({ todo, setTodos, setEditItem }) {
         >
           DELETE
         </button>
-      </Alert>
+      </TodoStyle>
     </>
   );
 }
