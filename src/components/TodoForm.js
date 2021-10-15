@@ -10,6 +10,7 @@ const initialState = {
 export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
   const [formInput, setFormInput] = useState(initialState);
   const handleChange = (e) => {
+    e.persist();
     setFormInput((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -54,7 +55,7 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">
           <input
-            className="inputField"
+            className="form-control form-control-lg me-1"
             name="name"
             id="name"
             placeholder="ADD A YOU-DO"
