@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { createTodo, updateToDo } from '../api/data/todoData';
 // FORMS ALWAYS HAVE STATE!!
 const initialState = {
@@ -7,6 +8,22 @@ const initialState = {
   complete: false,
   uid: '',
 };
+const TodoFormStyle = styled.div`
+  form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .input-group {
+    flex-shrink: 2;
+    width: 67em;
+    margin-bottom: 5em;
+  }
+
+  button {
+    height: 50px;
+  }
+`;
 export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
   const [formInput, setFormInput] = useState(initialState);
   const handleChange = (e) => {
@@ -52,22 +69,29 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">
-          <input
-            className="form-control form-control-lg me-1"
-            name="name"
-            id="name"
-            placeholder="ADD A YOU-DO"
-            value={formInput.name}
-            onChange={handleChange}
-            required
-          />
-          <button className="btn btn-success submit" type="submit">
-            {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
-          </button>
-        </label>
-      </form>
+      <TodoFormStyle>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="name">
+            <div className="input-group">
+              <input
+                className="form-control form-control-lg me-1"
+                type="text"
+                name="name"
+                id="name"
+                placeholder="ADD A YOU-DO"
+                value={formInput.name}
+                onChange={handleChange}
+                required
+              />
+              <span className="input-group-btn">
+                <button className="btn btn-success submit" type="submit">
+                  {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
+                </button>
+              </span>
+            </div>
+          </label>
+        </form>
+      </TodoFormStyle>
     </>
     // button will submit if creating and there is no firebasekey but will show update if edit button was clicked
   );
