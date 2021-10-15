@@ -14,6 +14,11 @@ const Container = styled.div`
     font-size: 64px;
     font-weight: 400;
   }
+  .btnContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
 `;
 
 function Initialize() {

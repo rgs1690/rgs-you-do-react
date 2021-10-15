@@ -9,14 +9,19 @@ const initialState = {
   uid: '',
 };
 const TodoFormStyle = styled.div`
-  .form-control {
-    display: inline;
-    width: 644px;
-    margin-bottom: 40px;
+  form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
   }
+  .input-group {
+    flex-shrink: 2;
+    width: 67em;
+    margin-bottom: 5em;
+  }
+
   button {
-    width: 90px;
-    height: 52px;
+    height: 50px;
   }
 `;
 export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
@@ -67,18 +72,23 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
       <TodoFormStyle>
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">
-            <input
-              className="form-control form-control-lg me-3"
-              name="name"
-              id="name"
-              placeholder="ADD A YOU-DO"
-              value={formInput.name}
-              onChange={handleChange}
-              required
-            />
-            <button className="btn btn-success submit" type="submit">
-              {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
-            </button>
+            <div className="input-group">
+              <input
+                className="form-control form-control-lg me-1"
+                type="text"
+                name="name"
+                id="name"
+                placeholder="ADD A YOU-DO"
+                value={formInput.name}
+                onChange={handleChange}
+                required
+              />
+              <span className="input-group-btn">
+                <button className="btn btn-success submit" type="submit">
+                  {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
+                </button>
+              </span>
+            </div>
           </label>
         </form>
       </TodoFormStyle>
