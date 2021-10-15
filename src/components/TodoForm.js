@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { createTodo, updateToDo } from '../api/data/todoData';
 // FORMS ALWAYS HAVE STATE!!
 const initialState = {
@@ -7,6 +8,17 @@ const initialState = {
   complete: false,
   uid: '',
 };
+const TodoFormStyle = styled.div`
+  .form-control {
+    display: inline;
+    width: 644px;
+    margin-bottom: 40px;
+  }
+  button {
+    width: 90px;
+    height: 52px;
+  }
+`;
 export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
   const [formInput, setFormInput] = useState(initialState);
   const handleChange = (e) => {
@@ -52,22 +64,24 @@ export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">
-          <input
-            className="form-control form-control-lg me-3"
-            name="name"
-            id="name"
-            placeholder="ADD A YOU-DO"
-            value={formInput.name}
-            onChange={handleChange}
-            required
-          />
-          <button className="btn btn-success submit" type="submit">
-            {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
-          </button>
-        </label>
-      </form>
+      <TodoFormStyle>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="name">
+            <input
+              className="form-control form-control-lg me-3"
+              name="name"
+              id="name"
+              placeholder="ADD A YOU-DO"
+              value={formInput.name}
+              onChange={handleChange}
+              required
+            />
+            <button className="btn btn-success submit" type="submit">
+              {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
+            </button>
+          </label>
+        </form>
+      </TodoFormStyle>
     </>
     // button will submit if creating and there is no firebasekey but will show update if edit button was clicked
   );
