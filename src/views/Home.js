@@ -5,14 +5,16 @@ import Todo from '../components/Todo';
 export default function Home({ todos, setTodos, setEditItem }) {
   return (
     <div>
-      {todos.map((todo) => (
-        <Todo
-          key={todo.firebaseKey}
-          todo={todo}
-          setTodos={setTodos}
-          setEditItem={setEditItem}
-        />
-      ))}
+      <div className="mt-5">
+        {todos.map((todo) => (
+          <Todo
+            key={todo.firebaseKey}
+            todo={todo}
+            setTodos={setTodos}
+            setEditItem={setEditItem}
+          />
+        ))}
+      </div>
     </div>
   );
 }

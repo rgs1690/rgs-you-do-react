@@ -9,13 +9,13 @@ export default function Routes({ todos, setTodos, setEditItem }) {
     <div>
       <Switch>
         <Route
-          exact
-          path="/"
+          exact // need route to be EXACTLY what the route is defined
+          path="/" // when path is this name this is what we want to do
           component={() => (
             <Home todos={todos} setTodos={setTodos} setEditItem={setEditItem} />
           )}
         />
-        <Route exact path="/completed" component={() => <Completed />} />
+        <Route exact path="/completed" component={Completed} />
       </Switch>
     </div>
   );

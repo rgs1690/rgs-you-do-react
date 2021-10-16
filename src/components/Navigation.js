@@ -13,7 +13,14 @@ export default function Navigation() {
           type="button"
           className="btn btn-light border border-dark"
         >
-          VIEW COMPLETED
+          Home
+        </button>
+        <button
+          onClick={() => history.push('/completed')}
+          type="button"
+          className="btn btn-light border border-dark"
+        >
+          View Completed
         </button>
       </ButtonGroup>
     </div>
