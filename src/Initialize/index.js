@@ -13,11 +13,13 @@ const Container = styled.div`
     text-align: center;
     font-size: 64px;
     font-weight: 400;
+    margin-bottom: 30px;
   }
   .btnContainer {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    margin-bottom: 30px;
   }
 `;
 
