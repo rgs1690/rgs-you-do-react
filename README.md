@@ -1,52 +1,42 @@
-# YOU-DO App
+# YOU DO  [![Netlify Status](https://api.netlify.com/api/v1/badges/72b5583d-a25a-4877-aa83-91cc3eafb9c1/deploy-status)](https://app.netlify.com/sites/rgs-you-do/deploys)
 
-## Get Started
-1. Open the `package.json` file and change the `name` property to the name of your application, and `author` to  your name
-1. Open the `/public/index.html` file and change the `title` attribute to the name of your application
-1. Rename the `.env.local.sample` file to `.env.local` file. The final file name should be `.env.local`
-1. From your command line, be in the root directory and run `npm install` OR `npm i` for short
-1. From your command line, be in the root directory and run `npx husky install`
-1. To start your application, run `npm start`
+YOU DO is an application is a virtual to-do list that keeps track of anything and everything you need to get done!
 
-Below are the steps to get setup, which you should already be very familiar with:
-1. Create a firebase app named `YOU-DO-App`
-2. Add authentication to the app (will use later)
-3. Setup a firebase database
-4. Add Sample Data to Your Database
-5. Add your firebase creds to the `.env` file
-6. Review the [MVP wireframe](https://www.figma.com/file/4YVF79vgSfeSj0H1G9HYDy/YOU-DO-MVP)
-7. CODE!
+[View App](rgs-you-do.netlify.app)
 
-## MVP Acceptance Criteria
-NOTE: **DO NOT** make style changes. Follow the wireframe as designed as it uses Bootstrap Components that will make your app development faster. If you are able to complete MVP, move on to the stretch goals.
+## Get Started <!-- OPTIONAL, but doesn't hurt -->
+````
+$ git clone git@github.com:rgs1690/rgs-you-do-react.git
+$ cd rgs-you-do-react
+````
 
-- As a user, I can add an item to my YOU-DO list by typing in the input and pressing submit
-- As a user, when I press submit, I should see the newly added YOU-DO on the DOM
-- As a user, I can complete a YOU-DO item by pressing a green button that reads "COMPLETE"
-- As a user, when I press complete, I should no longer see the item on the DOM and the done attribute should update in firebase to `true`
-- As a user, I can delete a YOU-DO by pressing a red button that reads "DELETE"
-- As a user, when I press delete, the YOU-DO should be deleted from firebase and I should no longer see it on the DOM
-- As an engineering hiring manager, I want to see a README that reflects the details of the project with the software engineers details and not THESE instructions.
+## About the User <!-- This is a scaled down user persona -->
+- The ideal user for this application is anyone who likes to manage their time with to-do lists.
 
-## STRETCH Acceptance Critieria
-**DO THESE IN ORDER OR BE FIRED**
-- Review the [STRETCH wireframe](https://www.figma.com/file/ggEHuoIjQoUOLTylmQZnTK/YOU-DO-STRETCH)
-- As a user, I should see an affordance that allows me to switch views (See wireframe)
-- As a user, if I select "View Completed" I should only see the completed YOU-DOs and whatever is shown in the wireframe
-- As a user, I should be able to select from a pre-defined list of categories for the YOU-DOs I create.
-- As a user, when I complete the form to submit a YOU-DO, the newly created YOU-DO should be visible on the DOM under the specified category and the category should update in firebase to the category I selected.
-- As a user, I should be able to edit a YOU-DO using the same form used to create a YOU-DO.
-- As a user, when I edit a YOU-DO and submit it, I should see the updated YOU-DO on the DOM under the chosen category.
-- As an engineering hiring manager, I want to see a README that reflects the details of the project with the software engineers details and not THESE instructions.
+## Features <!-- List your app features using bullets! Do NOT use a paragraph. No one will read that! -->
+- On the Home view users can: 
+    - view all you-do items that need to be completed.
+    - create new you-do items.
+    - edit the names of the items.
+    - Mark any item as completed when they have executed that item.
+    - Delete any you-do item that has not been completed.
+- On the View Completed view users can: 
+    - view all completed you-dos.
+    - delete all completed you-dos.
+- On the View All You-Dos, users can see a list of all you-do items, completed or not. 
 
-### Deploying on Netlify
+<!--## Video Walkthrough of APP NAME  A loom link is sufficient 
+https://www.loom.com/share/829b90d831ea441ba2db6bea724af210 
 
-- Build Command: `yarn build`
-- Publish directory: `build`
-- **Add Environmental Variables (NOT REQUIRED for Apps that do not use API Keys, etc)**
-    - Any Enviromental variables you are using in your `.env.local` file should be added to Netlify. 
-        - Go to Site settings > Build & deploy > Environment > Environment variables and the keys and values there.
-- **Update Firebase URL Settings**
-    - In Firebase under Authentication select sign in methods, scroll to Authorized domains. Add your Netlify URL.
-# Your own learning
-If you are interested in setting up your own project for things outside of class, you can run the command to start a React project `npx create-react-app {APP_NAME}` and setup all the files and structures from scratch.
+## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
+<!-- - [Check out the deployed site](#your-link)
+- [Wireframes](#your-link) -->
+
+<!-- ## Code Snippet <!-- OPTIONAL, but doesn't hurt -->
+<!-- PLACE CODE SNIPPET HERE --> 
+
+<!-- ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme --> 
+<!-- <img width="1148" alt="Your Alt" src="your-link.png"> -->
+
+## Contributors
+- [Grace Sutherland](https://github.com/rgs1690)
