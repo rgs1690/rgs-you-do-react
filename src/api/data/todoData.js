@@ -2,11 +2,23 @@ import axios from 'axios';
 import firebaseConfig from '../apiKeys';
 
 const baseURL = firebaseConfig.databaseURL;
-// youll have to change get todos to only get todos that complete=false for stretch goals
-const getTodos = () => new Promise((resolve, reject) => {
+// youll have to change get todos to only get todos that complete=false for stretch goals, Home will only show non completed todos
+const getAllTodos = () => new Promise((resolve, reject) => {
   axios
     .get(`${baseURL}/todos.json`)
     .then((response) => resolve(Object.values(response.data)))
+    .catch(reject);
+});
+const getTodos = (value) => new Promise((resolve, reject) => {
+  axios
+    .get(`${baseURL}/todos.json?orderBy="complete"&equalTo=${value}`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 const createTodo = (obj) => new Promise((resolve, reject) => {
@@ -17,7 +29,7 @@ const createTodo = (obj) => new Promise((resolve, reject) => {
       axios
         .patch(`${baseURL}/todos/${firebaseKey}.json`, { firebaseKey })
         .then(() => {
-          getTodos(obj).then(resolve);
+          getTodos(false).then(resolve);
         });
     })
     .catch(reject);
@@ -27,7 +39,7 @@ const deleteTodo = (firebaseKey) => new Promise((resolve, reject) => {
   axios
     .delete(`${baseURL}/todos/${firebaseKey}.json`)
     .then(() => {
-      getTodos().then(resolve);
+      getTodos(false).then(resolve);
     })
     .catch(reject);
 });
@@ -40,9 +52,8 @@ const updateToDo = (obj) => new Promise((resolve, reject) => {
 });
 
 const getCompletedTodos = () => new Promise((resolve, reject) => {
-  axios
-    .get(`${baseURL}/todos.json?orderBy="complete"&equalTo=true`)
-    .then((response) => resolve(Object.values(response.data)))
+  getTodos(true)
+    .then((todoArray) => resolve(todoArray))
     .catch(reject);
 });
 
@@ -59,4 +70,5 @@ export {
   updateToDo,
   getCompletedTodos,
   deleteCompletedTodo,
+  getAllTodos,
 };
