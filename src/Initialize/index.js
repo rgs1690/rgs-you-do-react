@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import { getTodos } from '../api/data/todoData';
-import Todo from '../components/Todo';
 import TodoForm from '../components/TodoForm';
+import Navigation from '../components/Navigation';
+import Routes from '../routes';
+import SignIn from '../views/SignIn';
 
 const Container = styled.div`
   width: 60%;
@@ -13,42 +17,60 @@ const Container = styled.div`
     text-align: center;
     font-size: 64px;
     font-weight: 400;
+    margin-bottom: 30px;
   }
   .btnContainer {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    margin-bottom: 30px;
   }
 `;
 
 function Initialize() {
   const [todos, setTodos] = useState([]);
   const [editItem, setEditItem] = useState({});
-
+  const [user, setUser] = useState(null);
   useEffect(() => {
-    getTodos().then(setTodos);
+    firebase.auth().onAuthStateChanged((authed) => {
+      if (authed) {
+        const userInfoObj = {
+          fullName: authed.displayName,
+          profileImage: authed.photoURL,
+          uid: authed.uid,
+          user: authed.email.split('@')[0],
+        };
+        setUser(userInfoObj);
+        getTodos(false).then(setTodos);
+      } else if (user || user === null) {
+        // if user is trying to logout OR if user is null
+        setUser(false);
+      }
+    });
   }, []);
   return (
-    <Container>
-      <div className="btnContainer">
-        <button type="button">HOME</button>
-        <button type="button">VIEW COMPLETED</button>
-      </div>
-      <div>
-        <h1>YOU-DO</h1>
-      </div>
-      <TodoForm obj={editItem} setTodos={setTodos} setEditItem={setEditItem} />
-      <div className="todoContainer">
-        {todos.map((todo) => (
-          <Todo
-            key={todo.firebaseKey}
-            todo={todo}
-            setTodos={setTodos}
-            setEditItem={setEditItem}
-          />
-        ))}
-      </div>
-    </Container>
+    <>
+      <Container>
+        {user ? (
+          <>
+            <Navigation />
+            <h1>YOU-DO</h1>
+            <TodoForm
+              obj={editItem}
+              setTodos={setTodos}
+              setEditItem={setEditItem}
+            />
+            <Routes
+              todos={todos}
+              seTodos={setTodos}
+              setEditItem={setEditItem}
+            />
+          </>
+        ) : (
+          <SignIn user={user} />
+        )}
+      </Container>
+    </>
   );
 }
 

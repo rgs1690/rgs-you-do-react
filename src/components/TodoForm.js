@@ -27,10 +27,11 @@ const TodoFormStyle = styled.div`
 export default function TodoForm({ obj = {}, setTodos, setEditItem }) {
   const [formInput, setFormInput] = useState(initialState);
   const handleChange = (e) => {
-    e.persist();
+    // e.persists() maybe does things that we do not expect so we handle it as engineers to control the e.target by destructing it.
+    const { name, value } = e.target; // will grab static values before we set the state it will have the value of the input outside asychronous function so no synethic event error
     setFormInput((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
+      ...prevState, // pervious state was messed up so and after one character it was showing up as null so we have to set the input instead of previous state
+      [name]: value,
     }));
   };
   // using useEffect to check if theres firebasekey and setForm input IF the obj has one

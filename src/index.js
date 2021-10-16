@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
+import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from 'firebase/app';
 import firebaseConfig from './api/apiKeys';
 import Initialize from './Initialize';
@@ -11,7 +12,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 firebase.initializeApp(firebaseConfig); // connect firebase to your code along with lines 4 and 5
 ReactDOM.render(
   <React.StrictMode>
-    <Initialize />
+    <Router>
+      <Initialize />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root'),
 );
