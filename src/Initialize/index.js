@@ -62,7 +62,7 @@ function Initialize() {
             />
             <Routes
               todos={todos}
-              seTodos={setTodos}
+              setTodos={setTodos}
               setEditItem={setEditItem}
             />
           </>
