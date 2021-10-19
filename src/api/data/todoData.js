@@ -47,7 +47,7 @@ const deleteTodo = (firebaseKey) => new Promise((resolve, reject) => {
 const updateToDo = (obj) => new Promise((resolve, reject) => {
   axios
     .patch(`${baseURL}/todos/${obj.firebaseKey}.json`, obj)
-    .then(() => getTodos().then(resolve))
+    .then(() => getTodos(false).then(resolve))
     .catch(reject);
 });
 

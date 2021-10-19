@@ -17,7 +17,11 @@ export default function Routes({ todos, setTodos, setEditItem }) {
           )}
         />
         <Route exact path="/completed" component={Completed} />
-        <Route exact path="/all" component={AllTodos} />
+        <Route
+          exact
+          path="/all"
+          component={() => <AllTodos setTodos={setTodos} />}
+        />
       </Switch>
     </div>
   );
