@@ -6,7 +6,13 @@ export default function AllTodos({ setTodos }) {
   const [allTodos, setAllTodos] = useState([]);
 
   useEffect(() => {
-    getAllTodos().then(setAllTodos);
+    let isMounted = true;
+    getAllTodos().then((todoArray) => {
+      if (isMounted) setAllTodos(todoArray);
+    });
+    return () => {
+      isMounted = false;
+    };
   }, []);
   //   const handleClick = (key) => {
   //     deleteTodo(key).then(setTodos);
