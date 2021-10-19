@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import firebase from 'firebase/app';
+import firebase from 'firebase/app'; // import for authentication
 import 'firebase/auth';
 import { getTodos } from '../api/data/todoData';
 import TodoForm from '../components/TodoForm';
@@ -30,11 +30,13 @@ const Container = styled.div`
 function Initialize() {
   const [todos, setTodos] = useState([]);
   const [editItem, setEditItem] = useState({});
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // null is an inbetween state for when the app is laoding
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
+      // put in use effect because you want it to run when app loads.
       if (authed) {
         const userInfoObj = {
+          // google object of user, take info that you need from that object.
           fullName: authed.displayName,
           profileImage: authed.photoURL,
           uid: authed.uid,

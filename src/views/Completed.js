@@ -22,7 +22,7 @@ export default function Completed() {
         >
           {completedTodo.name}
           <button
-            onClick={handleClick(completedTodo.firebakeKey)}
+            onClick={handleClick(completedTodo.firebaseKey)}
             className="btn btn-danger"
             type="button"
           >
