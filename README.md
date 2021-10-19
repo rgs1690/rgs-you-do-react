@@ -1,6 +1,6 @@
 # YOU DO  [![Netlify Status](https://api.netlify.com/api/v1/badges/72b5583d-a25a-4877-aa83-91cc3eafb9c1/deploy-status)](https://app.netlify.com/sites/rgs-you-do/deploys)
 
-YOU DO is an application is a virtual to-do list that keeps track of anything and everything you need to get done!
+YOU DO is a virtual to-do list that keeps track of anything and everything you need to get done!
 
 [View App](rgs-you-do.netlify.app)
 
@@ -25,18 +25,17 @@ $ cd rgs-you-do-react
     - delete all completed you-dos.
 - On the View All You-Dos, users can see a list of all you-do items, completed or not. 
 
-<!--## Video Walkthrough of APP NAME  A loom link is sufficient 
-https://www.loom.com/share/829b90d831ea441ba2db6bea724af210 
+## Video Walkthrough of YOU-DO
+https://www.loom.com/share/a1537d7f13dc4d08b6b59d0fa9564013 
 
-## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
-<!-- - [Check out the deployed site](#your-link)
-- [Wireframes](#your-link) -->
+## Relevant Links 
+ - [Check out the deployed site](https://rgs-you-do.netlify.app/)
+- [Wireframes](https://www.figma.com/file/4YVF79vgSfeSj0H1G9HYDy/YOU-DO-MVP?node-id=0%3A1)
 
-<!-- ## Code Snippet <!-- OPTIONAL, but doesn't hurt -->
-<!-- PLACE CODE SNIPPET HERE --> 
-
-<!-- ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme --> 
-<!-- <img width="1148" alt="Your Alt" src="your-link.png"> -->
+## Project Screenshots
+<img width="1148" alt="Your Alt" src="https://user-images.githubusercontent.com/78558344/137934304-401dce8a-04ad-4557-ac9b-9d9569cca57b.png"> 
+<img width="1148" alt="Your Alt" src="https://user-images.githubusercontent.com/78558344/137934481-8dd31eb7-c5db-4b7f-8340-e269e44d2ffc.png"> 
 
 ## Contributors
 - [Grace Sutherland](https://github.com/rgs1690)
+
