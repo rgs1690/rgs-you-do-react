@@ -2,7 +2,7 @@
 
 YOU DO is a virtual to-do list that keeps track of anything and everything you need to get done!
 
-[View App](rgs-you-do.netlify.app)
+[View App](https://rgs-you-do.netlify.app/)
 
 ## Get Started <!-- OPTIONAL, but doesn't hurt -->
 ````
